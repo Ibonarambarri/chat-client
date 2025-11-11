@@ -1,31 +1,41 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Chat LM Studio</title>
   <link rel="stylesheet" href="styles.css">
+  <script src="https://cdn.jsdelivr.net/npm/markdown-it@14.0.0/dist/markdown-it.min.js"></script>
+  <script src="https://unpkg.com/lucide@latest"></script>
 </head>
+
 <body>
-  <!-- Results Window (solo visible cuando hay historial) -->
   <div class="results-window hidden" id="resultsWindow">
-    <div class="messages" id="messagesContainer"></div>
+    <div class="messages" id="messagesContainer">
+      <div class="thinking-message hidden" id="thinkingMessage">
+        <span class="thinking-text">Razonando</span>
+        <span class="thinking-dots">
+          <span class="dot">.</span>
+          <span class="dot">.</span>
+          <span class="dot">.</span>
+        </span>
+      </div>
+    </div>
   </div>
 
-  <!-- Settings Panel (oculto por defecto) -->
   <div class="settings-window hidden" id="settingsWindow">
     <div class="settings-content">
-      <button class="close-settings" id="closeSettings">×</button>
+      <button class="close-settings" id="closeSettings">
+        <i data-lucide="x"></i>
+      </button>
       <div class="settings-section">
         <h3>Configuración</h3>
         <div class="settings-list">
           <div class="setting-item horizontal">
+            <div class="status-dot" id="statusDot"></div>
             <label>API URL</label>
-            <input type="text" id="apiUrl" placeholder="http://localhost:8443" />
-          </div>
-          <div class="setting-item horizontal">
-            <label>API KEY</label>
-            <input type="password" id="apiKey" placeholder="your-secret-api-key-here" />
+            <input type="text" id="apiUrl" placeholder="http://localhost:1234" />
           </div>
           <div class="setting-item hidden">
             <label>Temperatura</label>
@@ -37,8 +47,14 @@
               <input type="checkbox" id="noThink" checked />
               <label for="noThink" class="switch-label">
                 <span class="switch-slider">
-                  <span class="switch-text-left">/think</span>
-                  <span class="switch-text-right">/no_think</span>
+                  <span class="switch-text-left">
+                    <i data-lucide="brain"></i>
+                    <span>/think</span>
+                  </span>
+                  <span class="switch-text-right">
+                    <i data-lucide="brain-off"></i>
+                    <span>/no_think</span>
+                  </span>
                 </span>
               </label>
             </div>
@@ -48,56 +64,56 @@
     </div>
   </div>
 
-  <!-- Help Window (oculto por defecto) -->
   <div class="help-window hidden" id="helpWindow">
     <div class="help-content">
-      <button class="close-help" id="closeHelp">×</button>
+      <button class="close-help" id="closeHelp">
+        <i data-lucide="x"></i>
+      </button>
       <div class="help-section">
         <h3>Comandos disponibles</h3>
         <div class="command-list">
           <div class="command-item">
-            <span class="command-name">/help</span>
-            <span class="command-desc">Mostrar esta ayuda</span>
+            <i data-lucide="circle-help"></i>
+            <div class="command-details">
+              <span class="command-name">/help</span>
+              <span class="command-desc">Mostrar esta ayuda</span>
+            </div>
           </div>
           <div class="command-item">
-            <span class="command-name">/settings</span>
-            <span class="command-desc">Abrir configuración</span>
+            <i data-lucide="settings"></i>
+            <div class="command-details">
+              <span class="command-name">/settings</span>
+              <span class="command-desc">Abrir configuración</span>
+            </div>
           </div>
           <div class="command-item">
-            <span class="command-name">/clear</span>
-            <span class="command-desc">Limpiar historial</span>
-          </div>
-          <div class="command-item">
-            <span class="command-name">/close</span>
-            <span class="command-desc">Cerrar ventana actual</span>
+            <i data-lucide="eraser"></i>
+            <div class="command-details">
+              <span class="command-name">/clear</span>
+              <span class="command-desc">Limpiar historial</span>
+            </div>
           </div>
         </div>
       </div>
     </div>
   </div>
 
-  <!-- Command Suggestions (aparece sobre el input) -->
   <div class="suggestions-window hidden" id="suggestionsWindow">
     <div class="suggestions-list" id="suggestionsList"></div>
   </div>
 
-  <!-- Message Queue (bloques individuales) -->
   <div class="queue-container" id="queueContainer"></div>
 
-  <!-- Input Window (siempre visible al final) -->
   <div class="input-window" id="inputWindow">
     <div class="input-wrapper">
-      <div class="status-dot" id="statusDot"></div>
-      <input
-        type="text"
-        id="messageInput"
-        placeholder="Escribe un comando..."
-        autocomplete="off"
-        spellcheck="false"
-      />
+      <div class="thinking-indicator" id="thinkingIndicator">
+        <i data-lucide="brain"></i>
+      </div>
+      <input type="text" id="messageInput" placeholder="Escribe un comando..." autocomplete="off" spellcheck="false" />
     </div>
   </div>
 
   <script src="renderer.js"></script>
 </body>
+
 </html>

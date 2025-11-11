@@ -20,11 +20,11 @@ body {
 /* Suggestions Window - Aparece arriba del input cuando se escribe "/" */
 .suggestions-window {
   width: 100%;
-  max-width: 440px;
+  max-width: 484px;
   background: rgba(25, 25, 25, 0.98);
-  border-radius: 20px;
+  border-radius: 22px;
   border: none;
-  margin-bottom: 8px;
+  margin-bottom: 9px;
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   overflow: hidden;
 }
@@ -37,7 +37,7 @@ body {
 }
 
 .suggestions-list {
-  padding: 8px;
+  padding: 9px;
   display: flex;
   flex-direction: column;
   gap: 4px;
@@ -47,9 +47,9 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 12px 14px;
+  padding: 13px 15px;
   background: rgba(255, 255, 255, 0.03);
-  border-radius: 10px;
+  border-radius: 11px;
   cursor: pointer;
   transition: all 0.2s;
 }
@@ -61,24 +61,24 @@ body {
 
 .suggestion-command {
   font-family: 'Courier New', monospace;
-  font-size: 13px;
+  font-size: 14px;
   color: #10b981;
   font-weight: 600;
 }
 
 .suggestion-desc {
-  font-size: 12px;
+  font-size: 13px;
   color: #888;
 }
 
 /* Queue Container - Bloques individuales */
 .queue-container {
   width: 100%;
-  max-width: 440px;
+  max-width: 484px;
   display: flex;
   flex-direction: column;
-  gap: 8px;
-  margin-bottom: 8px;
+  gap: 9px;
+  margin-bottom: 9px;
 }
 
 .queue-item {
@@ -86,17 +86,17 @@ body {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 12px 16px;
+  padding: 13px 18px;
   background: rgba(25, 25, 25, 0.98);
-  border-radius: 20px;
-  gap: 12px;
+  border-radius: 22px;
+  gap: 13px;
   transition: all 0.2s;
   border: none;
 }
 
 .queue-item-text {
   flex: 1;
-  font-size: 13px;
+  font-size: 14px;
   color: #e5e5e5;
   white-space: nowrap;
   overflow: hidden;
@@ -105,12 +105,12 @@ body {
 }
 
 .queue-countdown {
-  font-size: 11px;
+  font-size: 12px;
   color: #10b981;
   font-weight: 600;
   font-family: 'Courier New', monospace;
   flex-shrink: 0;
-  min-width: 35px;
+  min-width: 38px;
   text-align: right;
 }
 
@@ -118,10 +118,10 @@ body {
   background: transparent;
   border: none;
   color: #666;
-  font-size: 16px;
+  font-size: 18px;
   cursor: pointer;
-  width: 20px;
-  height: 20px;
+  width: 22px;
+  height: 22px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -138,10 +138,10 @@ body {
 /* Input Window - Siempre visible en la parte inferior */
 .input-window {
   width: 100%;
-  max-width: 440px;
+  max-width: 484px;
   background: rgba(25, 25, 25, 0.98);
-  border-radius: 20px;
-  padding: 14px 16px;
+  border-radius: 22px;
+  padding: 15px 18px;
   border: none;
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
@@ -151,12 +151,12 @@ body {
   position: relative;
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 13px;
 }
 
 .status-dot {
-  width: 8px;
-  height: 8px;
+  width: 9px;
+  height: 9px;
   border-radius: 50%;
   background: #10b981;
   flex-shrink: 0;
@@ -165,8 +165,36 @@ body {
 
 .status-dot.disconnected {
   background: #ef4444;
-  box-shadow: 0 0 8px rgba(239, 68, 68, 0.6);
+  box-shadow: 0 0 9px rgba(239, 68, 68, 0.6);
   animation: none;
+}
+
+.thinking-indicator {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  transition: all 0.3s;
+}
+
+.thinking-indicator svg,
+.thinking-indicator i {
+  width: 18px;
+  height: 18px;
+}
+
+.thinking-indicator.think {
+  background: rgba(16, 185, 129, 0.15);
+  color: #10b981;
+  box-shadow: 0 0 12px rgba(16, 185, 129, 0.4);
+}
+
+.thinking-indicator.no-think {
+  background: rgba(255, 255, 255, 0.05);
+  color: rgba(255, 255, 255, 0.3);
 }
 
 @keyframes pulse {
@@ -188,7 +216,7 @@ body {
   background: transparent;
   border: none;
   color: #fff;
-  font-size: 15px;
+  font-size: 17px;
   font-weight: 400;
   outline: none;
   padding: 0;
@@ -208,14 +236,14 @@ body {
 /* Results Window - Aparece arriba del input */
 .results-window {
   width: 100%;
-  max-width: 440px;
-  max-height: 380px;
+  max-width: 484px;
+  max-height: 418px;
   background: rgba(25, 25, 25, 0.98);
-  border-radius: 20px;
+  border-radius: 22px;
   border: none;
   display: flex;
   flex-direction: column;
-  margin-bottom: 8px;
+  margin-bottom: 9px;
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   overflow: hidden;
 }
@@ -227,20 +255,19 @@ body {
   display: none;
 }
 
-
 .messages {
   flex: 1;
   overflow-y: auto;
   overflow-x: hidden;
-  padding: 14px 16px;
+  padding: 15px 18px;
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 11px;
   min-height: 0;
 }
 
 .messages::-webkit-scrollbar {
-  width: 6px;
+  width: 7px;
 }
 
 .messages::-webkit-scrollbar-track {
@@ -286,12 +313,12 @@ body {
 }
 
 .message-content {
-  padding: 12px 16px;
-  border-radius: 14px;
+  padding: 13px 18px;
+  border-radius: 15px;
   max-width: 88%;
   word-wrap: break-word;
   word-break: break-word;
-  font-size: 13.5px;
+  font-size: 15px;
   line-height: 1.6;
   font-weight: 400;
   letter-spacing: 0.1px;
@@ -311,14 +338,14 @@ body {
 
 .message-content.loading {
   display: flex;
-  gap: 6px;
-  padding: 16px;
+  gap: 7px;
+  padding: 18px;
   background: rgba(255, 255, 255, 0.05);
 }
 
 .loading-dot {
-  width: 6px;
-  height: 6px;
+  width: 7px;
+  height: 7px;
   border-radius: 50%;
   background: #666;
   animation: bounce 1.4s infinite ease-in-out;
@@ -350,11 +377,11 @@ body {
 /* Settings Window - Reemplaza al results cuando está visible */
 .settings-window {
   width: 100%;
-  max-width: 440px;
+  max-width: 484px;
   background: rgba(25, 25, 25, 0.98);
-  border-radius: 20px;
+  border-radius: 22px;
   border: none;
-  margin-bottom: 8px;
+  margin-bottom: 9px;
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   overflow: hidden;
 }
@@ -370,12 +397,12 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 16px 18px;
+  padding: 18px 20px;
   border-bottom: 1px solid rgba(255, 255, 255, 0.08);
 }
 
 .settings-header span {
-  font-size: 11px;
+  font-size: 12px;
   color: #777;
   text-transform: uppercase;
   letter-spacing: 1.5px;
@@ -384,15 +411,15 @@ body {
 
 .close-settings {
   position: absolute;
-  top: 16px;
-  right: 18px;
+  top: 18px;
+  right: 20px;
   background: transparent;
   border: none;
   color: #666;
-  font-size: 20px;
+  font-size: 22px;
   cursor: pointer;
-  width: 24px;
-  height: 24px;
+  width: 26px;
+  height: 26px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -401,49 +428,59 @@ body {
   z-index: 10;
 }
 
+.close-settings svg,
+.close-settings i {
+  width: 16px;
+  height: 16px;
+}
+
 .close-settings:hover {
   background: rgba(255, 255, 255, 0.1);
   color: #fff;
 }
 
 .settings-content {
-  padding: 16px 18px;
+  padding: 18px 20px;
   display: flex;
   flex-direction: column;
-  gap: 14px;
+  gap: 15px;
   position: relative;
 }
 
 .settings-section h3 {
-  font-size: 11px;
+  font-size: 12px;
   color: #777;
   text-transform: uppercase;
   letter-spacing: 1.5px;
-  margin-bottom: 16px;
+  margin-bottom: 18px;
   font-weight: 400;
 }
 
 .settings-list {
   display: flex;
   flex-direction: column;
-  gap: 14px;
+  gap: 15px;
 }
 
 .setting-item {
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: 9px;
 }
 
 .setting-item.horizontal {
   flex-direction: row;
   align-items: center;
-  gap: 12px;
+  gap: 13px;
+}
+
+.setting-item.horizontal .status-dot {
+  margin-right: 4px;
 }
 
 .setting-item.horizontal label {
   flex-shrink: 0;
-  min-width: 70px;
+  min-width: 77px;
 }
 
 .setting-item.horizontal input[type="text"],
@@ -453,7 +490,7 @@ body {
 
 .setting-item label {
   font-family: 'Courier New', monospace;
-  font-size: 13px;
+  font-size: 14px;
   color: #10b981;
   font-weight: 600;
   text-transform: none;
@@ -464,10 +501,10 @@ body {
 .setting-item input[type="password"] {
   background: rgba(255, 255, 255, 0.03);
   border: 1px solid rgba(255, 255, 255, 0.08);
-  border-radius: 10px;
-  padding: 12px 14px;
+  border-radius: 11px;
+  padding: 13px 15px;
   color: #fff;
-  font-size: 13px;
+  font-size: 14px;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
   transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
 }
@@ -517,7 +554,7 @@ body {
   position: relative;
   display: inline-block;
   width: 100%;
-  height: 50px;
+  height: 55px;
   cursor: pointer;
 }
 
@@ -529,24 +566,24 @@ body {
   bottom: 0;
   background: rgba(255, 255, 255, 0.08);
   border: 1px solid rgba(255, 255, 255, 0.12);
-  border-radius: 25px;
+  border-radius: 28px;
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0 20px;
+  padding: 0 22px;
   overflow: hidden;
 }
 
 .switch-slider::before {
   content: '';
   position: absolute;
-  height: 42px;
+  height: 46px;
   width: calc(50% - 4px);
   left: 4px;
   bottom: 3px;
   background: rgba(255, 255, 255, 0.15);
-  border-radius: 21px;
+  border-radius: 23px;
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   z-index: 1;
 }
@@ -575,11 +612,22 @@ input[type="checkbox"]:not(:checked) + .switch-label .switch-slider::before {
 .switch-text-left,
 .switch-text-right {
   font-family: 'Courier New', monospace;
-  font-size: 13px;
+  font-size: 14px;
   font-weight: 600;
   position: relative;
   z-index: 2;
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.switch-text-left svg,
+.switch-text-left i,
+.switch-text-right svg,
+.switch-text-right i {
+  width: 16px;
+  height: 16px;
 }
 
 /* NO checked (think activo): /think en verde brillante, /no_think apagado */
@@ -632,11 +680,11 @@ input[type="checkbox"]:checked + .switch-label .switch-text-right {
 /* Help Window */
 .help-window {
   width: 100%;
-  max-width: 440px;
+  max-width: 484px;
   background: rgba(25, 25, 25, 0.98);
-  border-radius: 20px;
+  border-radius: 22px;
   border: none;
-  margin-bottom: 8px;
+  margin-bottom: 9px;
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   overflow: hidden;
 }
@@ -649,32 +697,32 @@ input[type="checkbox"]:checked + .switch-label .switch-text-right {
 }
 
 .help-content {
-  padding: 16px 18px;
+  padding: 18px 20px;
   position: relative;
 }
 
 .help-section h3 {
-  font-size: 11px;
+  font-size: 12px;
   color: #777;
   text-transform: uppercase;
   letter-spacing: 1.5px;
-  margin-bottom: 16px;
+  margin-bottom: 18px;
   font-weight: 400;
 }
 
 .command-list {
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 11px;
 }
 
 .command-item {
   display: flex;
-  justify-content: space-between;
   align-items: center;
-  padding: 12px 14px;
+  gap: 13px;
+  padding: 13px 15px;
   background: rgba(255, 255, 255, 0.03);
-  border-radius: 10px;
+  border-radius: 11px;
   transition: background 0.2s;
 }
 
@@ -682,29 +730,44 @@ input[type="checkbox"]:checked + .switch-label .switch-text-right {
   background: rgba(255, 255, 255, 0.06);
 }
 
+.command-item > i,
+.command-item > svg {
+  width: 18px;
+  height: 18px;
+  color: #10b981;
+  flex-shrink: 0;
+}
+
+.command-details {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex: 1;
+}
+
 .command-name {
   font-family: 'Courier New', monospace;
-  font-size: 13px;
+  font-size: 14px;
   color: #10b981;
   font-weight: 600;
 }
 
 .command-desc {
-  font-size: 12px;
+  font-size: 13px;
   color: #888;
 }
 
 .close-help {
   position: absolute;
-  top: 16px;
-  right: 18px;
+  top: 18px;
+  right: 20px;
   background: transparent;
   border: none;
   color: #666;
-  font-size: 20px;
+  font-size: 22px;
   cursor: pointer;
-  width: 24px;
-  height: 24px;
+  width: 26px;
+  height: 26px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -713,9 +776,189 @@ input[type="checkbox"]:checked + .switch-label .switch-text-right {
   z-index: 10;
 }
 
+.close-help svg,
+.close-help i {
+  width: 16px;
+  height: 16px;
+}
+
 .close-help:hover {
   background: rgba(255, 255, 255, 0.1);
   color: #fff;
+}
+
+/* Thinking Message - Discrete display */
+.thinking-message {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  padding: 8px 0;
+  margin-bottom: 8px;
+  font-size: 11px;
+  color: rgba(255, 255, 255, 0.4);
+  font-weight: 400;
+  opacity: 0;
+  transform: translateY(-5px);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+}
+
+.thinking-message:not(.hidden) {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.thinking-text {
+  font-style: italic;
+}
+
+.thinking-dots {
+  display: inline-flex;
+  align-items: center;
+  gap: 1px;
+}
+
+.thinking-dots .dot {
+  animation: dotPulse 1.4s infinite ease-in-out;
+  opacity: 0.3;
+}
+
+.thinking-dots .dot:nth-child(1) {
+  animation-delay: 0s;
+}
+
+.thinking-dots .dot:nth-child(2) {
+  animation-delay: 0.2s;
+}
+
+.thinking-dots .dot:nth-child(3) {
+  animation-delay: 0.4s;
+}
+
+@keyframes dotPulse {
+  0%, 60%, 100% {
+    opacity: 0.3;
+  }
+  30% {
+    opacity: 1;
+  }
+}
+
+.normal-section {
+  margin: 4px 0;
+}
+
+/* Markdown styling */
+.message-content h1,
+.message-content h2,
+.message-content h3,
+.message-content h4,
+.message-content h5,
+.message-content h6 {
+  color: #fff;
+  margin: 12px 0 8px 0;
+  font-weight: 600;
+  line-height: 1.3;
+}
+
+.message-content h1 { font-size: 1.5em; }
+.message-content h2 { font-size: 1.3em; }
+.message-content h3 { font-size: 1.1em; }
+
+.message-content p {
+  margin: 8px 0;
+  line-height: 1.6;
+}
+
+.message-content code {
+  background: rgba(0, 0, 0, 0.3);
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-family: 'Courier New', monospace;
+  font-size: 12px;
+  color: #10b981;
+}
+
+.message-content pre {
+  background: rgba(0, 0, 0, 0.4);
+  padding: 12px;
+  border-radius: 8px;
+  overflow-x: auto;
+  margin: 12px 0;
+  border-left: 3px solid rgba(16, 185, 129, 0.5);
+}
+
+.message-content pre code {
+  background: transparent;
+  padding: 0;
+  color: #e5e5e5;
+  font-size: 12px;
+}
+
+.message-content ul,
+.message-content ol {
+  margin: 8px 0;
+  padding-left: 24px;
+}
+
+.message-content li {
+  margin: 4px 0;
+  line-height: 1.5;
+}
+
+.message-content blockquote {
+  border-left: 3px solid rgba(255, 255, 255, 0.3);
+  padding-left: 12px;
+  margin: 12px 0;
+  color: rgba(255, 255, 255, 0.7);
+  font-style: italic;
+}
+
+.message-content a {
+  color: #10b981;
+  text-decoration: none;
+  border-bottom: 1px solid rgba(16, 185, 129, 0.3);
+  transition: all 0.2s;
+}
+
+.message-content a:hover {
+  color: #14f195;
+  border-bottom-color: #14f195;
+}
+
+.message-content table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 12px 0;
+}
+
+.message-content table th,
+.message-content table td {
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 8px 12px;
+  text-align: left;
+}
+
+.message-content table th {
+  background: rgba(255, 255, 255, 0.05);
+  font-weight: 600;
+  color: #10b981;
+}
+
+.message-content hr {
+  border: none;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  margin: 16px 0;
+}
+
+.message-content strong {
+  font-weight: 600;
+  color: #fff;
+}
+
+.message-content em {
+  font-style: italic;
+  color: rgba(255, 255, 255, 0.9);
 }
 
 /* Helper classes */
