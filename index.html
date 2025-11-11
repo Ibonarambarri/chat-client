@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chat LM Studio</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <!-- Results Window (solo visible cuando hay historial) -->
+  <div class="results-window hidden" id="resultsWindow">
+    <div class="messages" id="messagesContainer"></div>
+  </div>
+
+  <!-- Settings Panel (oculto por defecto) -->
+  <div class="settings-window hidden" id="settingsWindow">
+    <div class="settings-content">
+      <button class="close-settings" id="closeSettings">×</button>
+      <div class="settings-section">
+        <h3>Configuración</h3>
+        <div class="settings-list">
+          <div class="setting-item horizontal">
+            <label>API URL</label>
+            <input type="text" id="apiUrl" placeholder="http://localhost:8443" />
+          </div>
+          <div class="setting-item horizontal">
+            <label>API KEY</label>
+            <input type="password" id="apiKey" placeholder="your-secret-api-key-here" />
+          </div>
+          <div class="setting-item hidden">
+            <label>Temperatura</label>
+            <input type="range" id="temperature" min="0" max="1" step="0.1" value="0.7" />
+            <span id="tempValue">0.7</span>
+          </div>
+          <div class="setting-item">
+            <div class="switch-container">
+              <input type="checkbox" id="noThink" checked />
+              <label for="noThink" class="switch-label">
+                <span class="switch-slider">
+                  <span class="switch-text-left">/think</span>
+                  <span class="switch-text-right">/no_think</span>
+                </span>
+              </label>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Help Window (oculto por defecto) -->
+  <div class="help-window hidden" id="helpWindow">
+    <div class="help-content">
+      <button class="close-help" id="closeHelp">×</button>
+      <div class="help-section">
+        <h3>Comandos disponibles</h3>
+        <div class="command-list">
+          <div class="command-item">
+            <span class="command-name">/help</span>
+            <span class="command-desc">Mostrar esta ayuda</span>
+          </div>
+          <div class="command-item">
+            <span class="command-name">/settings</span>
+            <span class="command-desc">Abrir configuración</span>
+          </div>
+          <div class="command-item">
+            <span class="command-name">/clear</span>
+            <span class="command-desc">Limpiar historial</span>
+          </div>
+          <div class="command-item">
+            <span class="command-name">/close</span>
+            <span class="command-desc">Cerrar ventana actual</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Command Suggestions (aparece sobre el input) -->
+  <div class="suggestions-window hidden" id="suggestionsWindow">
+    <div class="suggestions-list" id="suggestionsList"></div>
+  </div>
+
+  <!-- Message Queue (bloques individuales) -->
+  <div class="queue-container" id="queueContainer"></div>
+
+  <!-- Input Window (siempre visible al final) -->
+  <div class="input-window" id="inputWindow">
+    <div class="input-wrapper">
+      <div class="status-dot" id="statusDot"></div>
+      <input
+        type="text"
+        id="messageInput"
+        placeholder="Escribe un comando..."
+        autocomplete="off"
+        spellcheck="false"
+      />
+    </div>
+  </div>
+
+  <script src="renderer.js"></script>
+</body>
+</html>
