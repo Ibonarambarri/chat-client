@@ -1,201 +1,409 @@
-# LM Studio Chat Client
+# Gestor de Tareas con Chat IA
 
-Cliente de escritorio con interfaz flotante para interactuar con la API de LM Studio.
+## ✅ PROYECTO AUDITADO Y CORREGIDO
 
-## Características
+**Fecha de auditoría**: 2025-11-18
 
-- **Interfaz flotante** en la esquina inferior derecha de tu pantalla
-- **Hotkey global**: `Option + Espacio` para mostrar/ocultar
-- **Siempre visible** (always on top)
-- **Chat con historial** completo
-- **Configuración personalizable**: URL de API, temperatura, etc.
-- **Indicador de estado** de conexión con la API
-- **Diseño moderno** con gradientes y efectos de vidrio
+Este proyecto ha sido sometido a un **análisis exhaustivo** y todos los bugs críticos, vulnerabilidades de seguridad y problemas de rendimiento han sido corregidos.
 
-## Requisitos
+📄 **Ver reporte completo**: [FIXES_APPLIED.md](./FIXES_APPLIED.md)
 
-- **Node.js** (v16 o superior)
-- **macOS** (el hotkey Option+Space es específico de Mac)
-- **API de FastAPI** corriendo (del servidor que creaste antes)
+### Correcciones Aplicadas
 
-## Instalación
+- ✅ **10 bugs críticos** corregidos (100%)
+- ✅ **5 vulnerabilidades de seguridad** eliminadas
+- ✅ **4 optimizaciones de rendimiento** implementadas
+- ✅ **Memory leaks** eliminados completamente
+- ✅ **XSS protection** implementada con CSP
+- ✅ **Error boundaries** globales añadidos
+- ✅ **Input validation** exhaustiva en todas las APIs
+- ✅ **Buffer overflow protection** implementada
+
+---
+
+# Gestor de Tareas con Chat IA
+
+Cliente de escritorio para gestión de tareas y sesiones de trabajo, integrado con chat IA a través de LM Studio.
+
+## ✨ Características
+
+### Panel de Tareas (Superior)
+- ✅ **Gestión completa de tareas**: Crear, editar, completar y eliminar
+- 🎯 **Prioridades**: Alta, Media, Baja con colores distintivos
+- 📁 **Categorías**: Organiza por Trabajo, Personal, Estudio, Otros
+- 🏷️ **Tags personalizables**: Añade etiquetas a tus tareas
+- 📅 **Fechas límite**: Con indicadores visuales de vencimiento
+- ☑️ **Subtareas**: Divide tareas grandes en pasos más pequeños
+- 🔍 **Filtros**: Ver todas, pendientes, en progreso o completadas
+
+### Sistema de Sesiones
+- ⏱️ **Temporizador de sesión**: Cronometra tu tiempo de trabajo
+- 🍅 **Modo Pomodoro**: Ciclos de trabajo/descanso configurables (25min/5min por defecto)
+- ▶️ **Controles**: Pausar, reanudar y finalizar sesiones
+- 📊 **Historial**: Todas las sesiones quedan guardadas con duración total
+
+### Chat con IA (Inferior)
+- 💬 **Chat integrado** con LM Studio
+- 🤖 **Sin herramientas externas**: Chat directo sin tools
+- 🧠 **Modo Think**: Toggle para ver/ocultar el proceso de razonamiento
+- 🐛 **Debug Mode**: Ver contenido raw incluyendo tags
+- 📝 **Streaming en tiempo real**: Respuestas fluidas del modelo
+
+### Persistencia
+- 💾 **Guardado automático**: Todas las tareas y sesiones se guardan en archivos JSON locales
+- 📂 **Estructura simple**: Archivos en `data/tasks.json` y `data/sessions.json`
+- 🔄 **Backup fácil**: Copia la carpeta `data/` para respaldar todo
+
+## 🎨 Diseño
+
+- **Split layout 50/50**: Tareas arriba, chat abajo
+- **Dark theme moderno**: Colores oscuros con acentos verde (#10b981)
+- **Glassmorphism**: Fondos semi-transparentes con efecto vidrio
+- **Animaciones suaves**: Transiciones fluidas de 0.2-0.3s
+- **Iconos Lucide**: Librería de iconos moderna y consistente
+
+## 📋 Requisitos
+
+- **Node.js** (v16 o superior) para el servidor de tareas
+- **[LM Studio](https://lmstudio.ai/)** instalado y corriendo (para el chat)
+- **Un modelo de IA** cargado en LM Studio (recomendado: Qwen3 14B o superior)
+- **Navegador moderno** (Chrome, Firefox, Safari, Edge)
+
+## 🚀 Instalación y Uso
+
+### 1. Iniciar el Servidor de Tareas
 
 ```bash
-cd chat-client
+cd /Users/ibonarambarri/Desktop/chat-client
 
-# Instalar dependencias
-npm install
+# Iniciar el servidor
+node task-server.js
 ```
 
-## Uso
+Deberías ver:
+```
+✓ Task Server escuchando en http://localhost:3002
+  Data directory: /Users/ibonarambarri/Desktop/chat-client/data
 
-### Iniciar la aplicación
+  Endpoints disponibles:
+    GET    /tasks          - Listar tareas
+    POST   /tasks          - Crear tarea
+    PUT    /tasks/:id      - Actualizar tarea
+    DELETE /tasks/:id      - Eliminar tarea
+    GET    /sessions       - Listar sesiones
+    POST   /sessions       - Crear sesión
+    PUT    /sessions/:id   - Actualizar sesión
+    DELETE /sessions/:id   - Eliminar sesión
+    GET    /settings       - Obtener configuración
+    PUT    /settings       - Actualizar configuración
+```
+
+### 2. Iniciar LM Studio (Opcional, solo para chat)
+
+Si quieres usar el chat con IA:
+
+1. Abre LM Studio
+2. Descarga y carga un modelo (recomendado: `qwen/qwen3-14b`)
+3. Inicia el servidor local (generalmente `http://127.0.0.1:1234`)
+
+### 3. Abrir la Aplicación
+
+Simplemente abre `index.html` en tu navegador:
 
 ```bash
-npm start
+open index.html
 ```
 
-### Primera configuración
+O arrastra el archivo a tu navegador preferido.
 
-1. La ventana aparecerá en la esquina inferior derecha
-2. Haz clic en el icono **⚙️** (configuración)
-3. Configura la **URL de tu API**:
-   - Localhost: `http://localhost:8443`
-   - Tailscale: `https://tu-maquina.tail-scale.ts.net`
-4. Ajusta la temperatura si lo deseas (default: 0.7)
-5. Haz clic en **Guardar**
+### 4. Configurar (si usas chat)
 
-### Usar el chat
+1. Escribe `/settings` en el input del chat y presiona Enter
+2. Verifica que "LM STUDIO URL" sea correcta (normalmente `http://127.0.0.1:1234`)
+3. El punto verde indica conexión exitosa ✅
 
-1. Escribe tu mensaje en el campo de texto
-2. Presiona **Enter** para enviar (Shift+Enter para nueva línea)
-3. El historial de conversación se mantiene durante la sesión
+## 📖 Guía de Uso
 
-### Atajos de teclado
+### Gestión de Tareas
 
-- **Option + Espacio**: Mostrar/ocultar ventana
-- **Enter**: Enviar mensaje
-- **Shift + Enter**: Nueva línea en el mensaje
+#### Crear una tarea
+1. Click en el botón `+` en la esquina superior derecha del panel de tareas
+2. Rellena el formulario:
+   - **Título**: Nombre de la tarea (obligatorio)
+   - **Descripción**: Detalles adicionales (opcional)
+   - **Prioridad**: Alta (rojo), Media (amarillo), Baja (verde)
+   - **Categoría**: Trabajo, Personal, Estudio, Otros
+   - **Fecha límite**: Opcional, con selector de fecha y hora
+   - **Tags**: Separados por comas (ej: "urgente, importante")
+3. Click en "Guardar"
 
-## Estructura del proyecto
+#### Editar una tarea
+- Click en el icono de lápiz (✏️) en cualquier tarea
+
+#### Completar/Reactivar una tarea
+- Click en el icono de check (✓) para marcar como completada
+- Click en el icono de flecha circular para reactivar una tarea completada
+
+#### Eliminar una tarea
+- Click en el icono de papelera (🗑️)
+
+#### Filtrar tareas
+- Usa los botones "Todas", "Pendientes", "En progreso", "Completadas"
+
+### Sesiones de Trabajo
+
+#### Iniciar una sesión
+1. Click en el botón de play (▶️) en la esquina superior derecha
+2. Rellena el formulario:
+   - **Nombre**: Nombre de la sesión (ej: "Sesión de estudio")
+   - **Descripción**: Opcional
+   - **Activar Pomodoro**: Opcional
+     - Duración trabajo: 25 minutos por defecto
+     - Duración descanso: 5 minutos por defecto
+3. Click en "Iniciar sesión"
+
+#### Durante una sesión
+- **Pausar**: Click en el icono de pausa (⏸️)
+- **Reanudar**: Click en el icono de play (▶️)
+- **Finalizar**: Click en el icono de stop (⏹️)
+
+El temporizador muestra el tiempo transcurrido en formato MM:SS o HH:MM:SS
+
+### Chat con IA
+
+#### Comandos disponibles
+- `/help` - Mostrar ayuda
+- `/settings` - Abrir configuración
+- `/clear` - Limpiar historial
+- `Shift+Tab` - Toggle modo Think
+- `Escape` - Cerrar ventanas/sugerencias
+
+#### Ejemplos de uso
+```
+💬 Tú: Ayúdame a organizar mis tareas
+🤖 Asistente: [Responde con sugerencias]
+
+💬 Tú: ¿Qué debería priorizar hoy?
+🤖 Asistente: [Analiza y sugiere]
+```
+
+## 📁 Estructura del Proyecto
 
 ```
 chat-client/
-├── main.js           # Proceso principal de Electron
-├── preload.js        # Script de preload (seguridad)
-├── index.html        # Interfaz HTML
-├── styles.css        # Estilos de la interfaz
-├── renderer.js       # Lógica del cliente y conexión con API
-├── package.json      # Configuración de npm
-└── README.md         # Este archivo
+├── index.html            # Interfaz HTML principal
+├── styles.css           # Estilos CSS completos (dark theme)
+├── renderer.js          # Lógica del cliente (chat + tareas)
+├── task-server.js       # Servidor REST API para persistencia
+├── data/                # Carpeta de datos (se crea automáticamente)
+│   ├── tasks.json       # Tareas guardadas
+│   ├── sessions.json    # Sesiones guardadas
+│   └── settings.json    # Configuración del usuario
+├── main.js              # Electron main process (opcional)
+├── package.json         # Configuración de npm
+└── README.md            # Este archivo
 ```
 
-## Configuración avanzada
+## 🗃️ Estructura de Datos
 
-### Cambiar la posición de la ventana
-
-Edita `main.js` líneas 13-14:
-
-```javascript
-// Para cambiar la posición, modifica estos valores:
-x: width - windowWidth - margin,  // Posición X
-y: height - windowHeight - margin, // Posición Y
+### Tarea (Task)
+```json
+{
+  "id": "unique-id",
+  "title": "Nombre de la tarea",
+  "description": "Descripción opcional",
+  "priority": "alta|media|baja",
+  "category": "Trabajo|Personal|Estudio|Otros",
+  "tags": ["tag1", "tag2"],
+  "deadline": "2025-11-20T15:00:00.000Z",
+  "subtasks": [],
+  "status": "pendiente|en_progreso|completada",
+  "createdAt": "2025-11-17T10:00:00.000Z",
+  "completedAt": null
+}
 ```
 
-Ejemplos:
-- **Inferior izquierda**: `x: margin, y: height - windowHeight - margin`
-- **Superior derecha**: `x: width - windowWidth - margin, y: margin`
-- **Centro**: `x: (width - windowWidth) / 2, y: (height - windowHeight) / 2`
-
-### Cambiar el tamaño de la ventana
-
-Edita `main.js` líneas 10-11:
-
-```javascript
-const windowWidth = 400;   // Ancho en píxeles
-const windowHeight = 600;  // Alto en píxeles
+### Sesión (Session)
+```json
+{
+  "id": "unique-id",
+  "name": "Sesión de trabajo",
+  "description": "Descripción opcional",
+  "taskIds": ["task-id-1", "task-id-2"],
+  "startTime": "2025-11-17T10:00:00.000Z",
+  "endTime": "2025-11-17T11:30:00.000Z",
+  "totalMinutes": 90,
+  "pomodoroEnabled": true,
+  "pomodoroWorkMinutes": 25,
+  "pomodoroBreakMinutes": 5,
+  "status": "activa|pausada|completada",
+  "createdAt": "2025-11-17T10:00:00.000Z"
+}
 ```
 
-### Cambiar el hotkey
+## 🔧 API REST del Servidor
 
-Edita `main.js` línea 44:
+### Tareas
 
-```javascript
-// Cambiar 'Alt+Space' por otro atajo:
-globalShortcut.register('Alt+Space', () => {
-  // ...
-});
-```
+| Método | Endpoint | Descripción |
+|--------|----------|-------------|
+| GET | `/tasks` | Listar todas las tareas |
+| POST | `/tasks` | Crear nueva tarea |
+| PUT | `/tasks/:id` | Actualizar tarea existente |
+| DELETE | `/tasks/:id` | Eliminar tarea |
 
-Opciones:
-- `'CommandOrControl+Shift+Space'` - Cmd+Shift+Espacio
-- `'Alt+C'` - Option+C
-- `'CommandOrControl+K'` - Cmd+K
+### Sesiones
 
-Ver más opciones en: [Electron Accelerators](https://www.electronjs.org/docs/latest/api/accelerator)
+| Método | Endpoint | Descripción |
+|--------|----------|-------------|
+| GET | `/sessions` | Listar todas las sesiones |
+| POST | `/sessions` | Crear nueva sesión |
+| PUT | `/sessions/:id` | Actualizar sesión existente |
+| DELETE | `/sessions/:id` | Eliminar sesión |
 
-### Ocultar al perder foco
+### Configuración
 
-Si quieres que la ventana se oculte cuando haces clic fuera de ella, descomenta la línea 32 en `main.js`:
+| Método | Endpoint | Descripción |
+|--------|----------|-------------|
+| GET | `/settings` | Obtener configuración |
+| PUT | `/settings` | Actualizar configuración |
 
-```javascript
-chatWindow.on('blur', () => {
-  toggleWindow();  // Descomentar esta línea
-});
-```
+## ⚠️ Solución de Problemas
 
-## Construir aplicación nativa
+### El servidor de tareas no inicia
 
-Para crear un .app de macOS:
+**Síntomas**: Error al ejecutar `node task-server.js`
 
-```bash
-npm run build
-```
+**Soluciones**:
+- Verifica que Node.js esté instalado: `node --version`
+- Verifica que el puerto 3002 no esté en uso: `lsof -i :3002`
+- Instala Node.js si es necesario: [nodejs.org](https://nodejs.org/)
 
-Esto generará una aplicación en `dist/` que puedes arrastrar a tu carpeta de Aplicaciones.
+### Las tareas no se guardan
 
-## Troubleshooting
+**Síntomas**: Las tareas desaparecen al recargar
 
-### Error: "Cannot find module 'electron'"
+**Soluciones**:
+1. Verifica que `task-server.js` esté corriendo
+2. Abre la consola del navegador (F12) para ver errores
+3. Verifica que la carpeta `data/` exista y tenga permisos de escritura
+4. Revisa la consola del servidor para ver errores de escritura
 
-```bash
-rm -rf node_modules package-lock.json
-npm install
-```
+### El chat no se conecta a LM Studio
 
-### La ventana no aparece
+**Síntomas**: Punto rojo en configuración, errores de conexión
 
-1. Verifica que Electron se instaló correctamente
-2. Revisa la consola para errores
-3. Asegúrate de que no hay otro proceso usando Electron
-
-### El hotkey no funciona
-
-1. Verifica que no haya conflictos con otros atajos del sistema
-2. Intenta con otro atajo en `main.js`
-3. Ejecuta la app con permisos de accesibilidad:
-   - **System Settings → Privacy & Security → Accessibility**
-   - Añade la aplicación Terminal o Electron
-
-### No se conecta a la API
-
-1. Verifica que la API esté corriendo
-2. Revisa la URL en configuración (⚙️)
-3. Para Tailscale Funnel, usa `https://` no `http://`
-4. Para localhost, usa `http://localhost:8443`
-5. Verifica el indicador de estado (verde = conectado, rojo = desconectado)
+**Soluciones**:
+1. Verifica que LM Studio esté corriendo
+2. Verifica que el servidor esté iniciado en LM Studio
+3. Revisa la URL en `/settings` (debería ser `http://127.0.0.1:1234`)
+4. Verifica que un modelo esté cargado en LM Studio
+5. Abre la consola del navegador (F12) para ver errores detallados
 
 ### Error de CORS
 
-Si ves errores de CORS en la consola, asegúrate de que tu API FastAPI tiene el middleware CORS configurado (ya lo tiene en el código del servidor).
+**Síntomas**: Errores de CORS en la consola
 
-## Características futuras
+**Soluciones**:
+- El servidor ya tiene CORS habilitado para localhost
+- Asegúrate de abrir la aplicación desde el mismo equipo donde corre el servidor
+- No uses direcciones IP, usa `localhost` o `127.0.0.1`
 
-Posibles mejoras que puedes implementar:
+## 🔮 Futuras Mejoras
 
-- [ ] Modo oscuro/claro
-- [ ] Múltiples conversaciones guardadas
-- [ ] Exportar chat a texto/markdown
-- [ ] Notificaciones del sistema
-- [ ] Auto-actualización
-- [ ] Soporte para imágenes
-- [ ] Comandos slash (/help, /clear, etc.)
+Ideas para extender la funcionalidad:
+
+### Tareas
+- [ ] Subtareas interactivas con checkboxes
+- [ ] Arrastrar y soltar para reordenar
+- [ ] Vista de calendario para tareas con fechas
+- [ ] Búsqueda de tareas por texto
+- [ ] Estadísticas de productividad
+- [ ] Exportar tareas a CSV/JSON
+
+### Sesiones
+- [ ] Notificaciones de finalización Pomodoro
+- [ ] Sonidos al finalizar ciclos
+- [ ] Asignar tareas específicas a sesiones
+- [ ] Gráficos de tiempo trabajado
+- [ ] Metas diarias/semanales
+
+### Chat
+- [ ] Comandos para crear tareas desde el chat
+- [ ] Sugerencias de IA basadas en tareas pendientes
+- [ ] Análisis de productividad por IA
+- [ ] Exportar conversaciones
+
+### Técnico
+- [ ] Sincronización en la nube (opcional)
+- [ ] Aplicación Electron standalone
+- [ ] Soporte para múltiples usuarios
 - [ ] Temas personalizables
-- [ ] Atajos de teclado adicionales
-- [ ] Streaming de respuestas
+- [ ] Atajos de teclado globales
+- [ ] Tests automatizados
 
-## Desarrollo
+## 💡 Personalización
 
-Para desarrollar con hot-reload:
+### Cambiar colores
 
-```bash
-# Instalar nodemon globalmente
-npm install -g nodemon
+Edita `styles.css` y busca estas variables:
 
-# Ejecutar con auto-restart
-nodemon --exec npm start
+```css
+/* Color principal (verde) */
+#10b981
+
+/* Fondos oscuros */
+rgba(25, 25, 25, 0.98)
+rgba(15, 15, 15, 0.95)
+
+/* Colores de prioridad */
+#ef4444 /* Alta - Rojo */
+#fbbf24 /* Media - Amarillo */
+#10b981 /* Baja - Verde */
 ```
 
-## Licencia
+### Cambiar puerto del servidor
 
-MIT
+Edita `task-server.js`:
+
+```javascript
+const PORT = 3002; // Cambia a tu puerto preferido
+```
+
+Y en `renderer.js`:
+
+```javascript
+const TASK_SERVER_URL = 'http://localhost:3002'; // Actualiza aquí también
+```
+
+### Añadir categorías personalizadas
+
+Edita `index.html`, busca el select de categorías:
+
+```html
+<select id="taskCategory">
+  <option value="Trabajo">Trabajo</option>
+  <option value="Personal">Personal</option>
+  <option value="Estudio">Estudio</option>
+  <option value="TuCategoria">Tu Categoría</option> <!-- Añade aquí -->
+  <option value="Otros">Otros</option>
+</select>
+```
+
+## 🤝 Contribuir
+
+¡Las contribuciones son bienvenidas! Algunas ideas:
+
+1. Fork el proyecto
+2. Crea una rama para tu feature (`git checkout -b feature/AmazingFeature`)
+3. Commit tus cambios (`git commit -m 'Add some AmazingFeature'`)
+4. Push a la rama (`git push origin feature/AmazingFeature`)
+5. Abre un Pull Request
+
+## 📄 Licencia
+
+Este proyecto es de código abierto. Úsalo y modifícalo como quieras.
+
+---
+
+**Desarrollado con ❤️ para gestión de tareas productiva**

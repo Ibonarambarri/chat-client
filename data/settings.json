@@ -1,0 +1,10 @@
+{
+  "pomodoroWorkMinutes": 25,
+  "pomodoroBreakMinutes": 5,
+  "categories": [
+    "Trabajo",
+    "Personal",
+    "Estudio",
+    "Otros"
+  ]
+}

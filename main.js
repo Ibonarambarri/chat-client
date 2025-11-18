@@ -1,6 +1,10 @@
 const { app, BrowserWindow, globalShortcut, screen } = require('electron');
 const path = require('path');
 
+// Window configuration constants
+const WINDOW_WIDTH = 480;
+const WINDOW_MARGIN = 20;
+
 let chatWindow = null;
 let isVisible = false;
 
@@ -12,21 +16,17 @@ if (process.platform === 'darwin') {
 function createChatWindow() {
   const { width, height } = screen.getPrimaryDisplay().workAreaSize;
 
-  // Ventana pequeña en la esquina inferior derecha
-  const windowWidth = 480;
-  const windowHeight = 480;
-  const margin = 20;
-
+  // Ventana con toda la altura en el lado derecho
   chatWindow = new BrowserWindow({
-    width: windowWidth,
-    height: windowHeight,
-    x: width - windowWidth - margin,
-    y: height - windowHeight - margin,
+    width: WINDOW_WIDTH,
+    height: height, // Toda la altura de la pantalla
+    x: width, // Empieza fuera de la pantalla (derecha)
+    y: 0, // Desde arriba
     frame: false,
     transparent: true,
     alwaysOnTop: true,
     skipTaskbar: true,
-    resizable: true,
+    resizable: false, // Desactivar resize para mantener consistencia
     show: false,
     backgroundColor: '#00000000',
     visibleOnAllWorkspaces: true,
@@ -48,12 +48,6 @@ function createChatWindow() {
     chatWindow.setVisibleOnAllWorkspaces(true);
   }
 
-  // Ocultar ventana al perder foco (opcional, comenta si no lo quieres)
-  chatWindow.on('blur', () => {
-    // Comentado para que no se oculte al hacer clic fuera
-    // toggleWindow();
-  });
-
   chatWindow.on('closed', () => {
     chatWindow = null;
   });
@@ -65,8 +59,20 @@ function toggleWindow() {
   }
 
   if (isVisible) {
-    chatWindow.hide();
-    isVisible = false;
+    // Animación de salida: slide hacia la derecha
+    const cursorPoint = screen.getCursorScreenPoint();
+    const currentDisplay = screen.getDisplayNearestPoint(cursorPoint);
+    const { width, height } = currentDisplay.workArea;
+
+    const startX = currentDisplay.workArea.x + width - WINDOW_WIDTH;
+    const endX = currentDisplay.workArea.x + width; // Fuera de la pantalla
+    const yPos = currentDisplay.workArea.y;
+
+    animateWindow(startX, endX, yPos, 200, () => {
+      chatWindow.hide();
+      isVisible = false;
+    });
+
     if (process.platform === 'darwin') {
       app.dock.hide();
     }
@@ -76,24 +82,50 @@ function toggleWindow() {
     const currentDisplay = screen.getDisplayNearestPoint(cursorPoint);
     const { width, height } = currentDisplay.workArea;
 
-    // Reposicionar la ventana en el escritorio actual
-    const windowWidth = 480;
-    const windowHeight = 480;
-    const margin = 20;
+    // Posición inicial (fuera de la pantalla a la derecha)
+    const startX = currentDisplay.workArea.x + width;
+    const endX = currentDisplay.workArea.x + width - WINDOW_WIDTH;
+    const yPos = currentDisplay.workArea.y;
 
-    chatWindow.setPosition(
-      currentDisplay.workArea.x + width - windowWidth - margin,
-      currentDisplay.workArea.y + height - windowHeight - margin
-    );
-
+    // Posicionar fuera de la pantalla y mostrar
+    chatWindow.setPosition(startX, yPos);
     chatWindow.show();
     chatWindow.focus();
-    isVisible = true;
+
+    // Animación de entrada: slide desde la derecha
+    animateWindow(startX, endX, yPos, 200, () => {
+      isVisible = true;
+    });
 
     if (process.platform === 'darwin') {
       app.dock.hide();
     }
   }
+}
+
+// Función para animar la ventana
+function animateWindow(startX, endX, yPos, duration, callback) {
+  const startTime = Date.now();
+  const distance = endX - startX;
+
+  function animate() {
+    const elapsed = Date.now() - startTime;
+    const progress = Math.min(elapsed / duration, 1);
+
+    // Easing function (ease-out cubic)
+    const eased = 1 - Math.pow(1 - progress, 3);
+
+    const currentX = Math.round(startX + distance * eased);
+    chatWindow.setPosition(currentX, yPos);
+
+    if (progress < 1) {
+      setTimeout(animate, 16); // ~60fps
+    } else {
+      if (callback) callback();
+    }
+  }
+
+  animate();
 }
 
 app.whenReady().then(() => {

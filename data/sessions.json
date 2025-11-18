@@ -1,0 +1,46 @@
+[
+  {
+    "id": "mi3o86rw3rikj5w9t",
+    "name": "Sesison de estudio",
+    "description": "",
+    "taskIds": [],
+    "startTime": "2025-11-17T21:43:03.494Z",
+    "endTime": "2025-11-17T21:43:17.455Z",
+    "totalMinutes": 0,
+    "pomodoroEnabled": true,
+    "pomodoroWorkMinutes": 25,
+    "pomodoroBreakMinutes": 5,
+    "status": "completada",
+    "createdAt": "2025-11-17T21:43:03.500Z",
+    "updatedAt": "2025-11-17T21:43:17.458Z"
+  },
+  {
+    "id": "mi3pnws1q1hvhw58n",
+    "name": "estudio",
+    "description": "",
+    "taskIds": [],
+    "startTime": "2025-11-17T22:23:16.654Z",
+    "endTime": null,
+    "totalMinutes": 0,
+    "pomodoroEnabled": true,
+    "pomodoroWorkMinutes": 25,
+    "pomodoroBreakMinutes": 5,
+    "status": "activa",
+    "createdAt": "2025-11-17T22:23:16.657Z"
+  },
+  {
+    "id": "mi3ponpigyfxln6tb",
+    "name": "estudio",
+    "description": "",
+    "taskIds": [],
+    "startTime": "2025-11-17T22:23:51.553Z",
+    "endTime": "2025-11-17T22:24:00.265Z",
+    "totalMinutes": 0,
+    "pomodoroEnabled": true,
+    "pomodoroWorkMinutes": 25,
+    "pomodoroBreakMinutes": 5,
+    "status": "completada",
+    "createdAt": "2025-11-17T22:23:51.558Z",
+    "updatedAt": "2025-11-17T22:24:00.268Z"
+  }
+]

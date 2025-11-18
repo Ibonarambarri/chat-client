@@ -1,0 +1,42 @@
+[
+  {
+    "id": "mi3o3w858q5ah75z8",
+    "title": "Tarea de prueba",
+    "description": "",
+    "priority": "baja",
+    "category": "Trabajo",
+    "tags": [],
+    "deadline": null,
+    "subtasks": [],
+    "status": "pendiente",
+    "createdAt": "2025-11-17T21:39:43.205Z",
+    "completedAt": null,
+    "updatedAt": "2025-11-17T21:43:34.277Z"
+  },
+  {
+    "id": "mi3pm1zwoqw746kk8",
+    "title": "ejemplo",
+    "description": "",
+    "priority": "media",
+    "category": "Trabajo",
+    "tags": [],
+    "deadline": null,
+    "subtasks": [],
+    "status": "pendiente",
+    "createdAt": "2025-11-17T22:21:50.108Z",
+    "completedAt": null
+  },
+  {
+    "id": "mi3pnbwtqrd0s9ria",
+    "title": "ejemplo hoy",
+    "description": "",
+    "priority": "baja",
+    "category": "Trabajo",
+    "tags": [],
+    "deadline": "2025-11-17T23:22",
+    "subtasks": [],
+    "status": "pendiente",
+    "createdAt": "2025-11-17T22:22:49.613Z",
+    "completedAt": null
+  }
+]
